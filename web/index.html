@@ -24,43 +24,24 @@
 
         <div class="container" id="content-area">
 
-            <div class="columns">
-                <div class="column is-four-fifths">
+            <!-- CONTENTS -->
+            <div>
+                <h1 class="title is-5">Submitted items ({{ messages.length }})</h1>
+                <div class="box-list" id="message-box">
+                    <div class="box" v-for="message in messages">{{ message }}<a class="delete is-pulled-right"></a></div>
+                </div>
+            </div>
 
-                    <!-- CONTENTS -->
-                    <div>
-                        <h1 class="title is-5">Submitted items ({{ messages.length }})</h1>
-                        <div class="box-list" id="message-box">
-                            <div class="box" v-for="message in messages">{{ message }}<a class="delete is-pulled-right"></a></div>
-                        </div>
+            <!-- INPUT AREA -->
+            <div id="input-area">
+                <div class="field has-addons">
+                    <div class="control is-expanded">
+                        <input v-model="message" v-on:keyup.enter="send" class="input is-large is-primary" type="text" placeholder="I would love to...">
                     </div>
-
-                    <!-- INPUT AREA -->
-                    <div id="input-area">
-                        <div class="field has-addons">
-                            <div class="control is-expanded">
-                                <input v-model="message" v-on:keyup.enter="send" class="input is-large is-primary" type="text" placeholder="I would love to...">
-                            </div>
-                            <div class="control">
-                                <a v-on:click="send" class="button is-large is-primary"><i class="fas fa-paper-plane"></i></a>
-                            </div>
-                        </div>
+                    <div class="control">
+                        <a v-on:click="send" class="button is-large is-primary"><i class="fas fa-paper-plane"></i></a>
                     </div>
                 </div>
-
-                <!-- AGENDA COLUMN -->
-                <div class="column">
-                    <aside class="menu">
-                        <p class="menu-label">Agenda</p>
-                        <ul class="menu-list">
-                            <li><a>1. Write down problems</a></li>
-                            <li><a class="is-active">2. Brainstorm solutions</a></li>
-                            <li><a>3. Define action items</a></li>
-                            <li><a>4. Summary & Next Steps</a></li>
-                        </ul>
-                    </aside>
-                </div>
-
             </div>
 
         </div>
