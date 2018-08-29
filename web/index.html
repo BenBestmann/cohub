@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The next big thing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css">
+    <link rel="stylesheet" href="custom.css">
+</head>
+
+<body>
+
+    <div id="app">
+
+        <!-- HEADER -->
+        <div class="hero level-left is-primary">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">Write down problems (1/6)</h1>
+                    <h2 class="subtitle">What can we improve this week?</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" id="content-area">
+
+            <div class="columns">
+                <div class="column is-four-fifths">
+
+                    <!-- CONTENTS -->
+                    <div>
+                        <h1 class="title is-5">Submitted items ({{ messages.length }})</h1>
+                        <div class="box-list" id="message-box">
+                            <div class="box" v-for="message in messages">{{ message }}<a class="delete is-pulled-right"></a></div>
+                        </div>
+                    </div>
+
+                    <!-- INPUT AREA -->
+                    <div id="input-area">
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                <input v-model="message" v-on:keyup.enter="send" class="input is-large is-primary" type="text" placeholder="I would love to...">
+                            </div>
+                            <div class="control">
+                                <a v-on:click="send" class="button is-large is-primary"><i class="fas fa-paper-plane"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AGENDA COLUMN -->
+                <div class="column">
+                    <aside class="menu">
+                        <p class="menu-label">Agenda</p>
+                        <ul class="menu-list">
+                            <li><a>1. Write down problems</a></li>
+                            <li><a class="is-active">2. Brainstorm solutions</a></li>
+                            <li><a>3. Define action items</a></li>
+                            <li><a>4. Summary & Next Steps</a></li>
+                        </ul>
+                    </aside>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/buefy"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+    <script src="http://localhost:5000/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+
+</body>
+
+</html>

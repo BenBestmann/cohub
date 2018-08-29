@@ -1,0 +1,17 @@
+{
+  "name": "cohub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Benjamin Bestmann <benjamin@strivehq.com> (http://strivehq.com)",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "2.8.4",
+    "express": "4.16.3",
+    "method-override": "3.0.0",
+    "socket.io": "2.1.1"
+  }
+}

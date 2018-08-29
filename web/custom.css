@@ -1,0 +1,19 @@
+#content-area {
+    margin-top: 3rem;
+}
+
+#input-area {
+    margin-top: 3rem;
+}
+
+.box-list {
+    min-height: 25rem;
+    max-height: 25rem;
+    overflow: scroll;
+    padding: 0.5rem;
+}
+
+.box-list > .box {
+    padding: 0.7rem;
+    margin-bottom: 0.7rem;
+}
