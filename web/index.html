@@ -28,7 +28,7 @@
             <div>
                 <h1 class="title is-5">Submitted items ({{ messages.length }})</h1>
                 <div class="box-list" id="message-box">
-                    <div class="box" v-for="message in messages">{{ message }}<a class="delete is-pulled-right"></a></div>
+                    <div class="box" v-for="message in messages">{{ message.text }}<a class="delete is-pulled-right"></a></div>
                 </div>
             </div>
 

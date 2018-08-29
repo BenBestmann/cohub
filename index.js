@@ -43,7 +43,7 @@ io.on('connection', client => {
     client.emit('update', messages);
 
     client.on('message', function(message) {
-        // console.log('Message received: ' + message);
+        console.log(message);
         messages.push(message);
         // console.log('Total messages: ' + messages.length);
         client.broadcast.emit('update', messages);

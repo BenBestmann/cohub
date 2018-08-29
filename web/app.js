@@ -5,6 +5,19 @@ function scrollToBottom(id){
     div.scrollTop = div.scrollHeight - div.clientHeight;
 }
 
+function guid() {
+    function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
+    }
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+}
+
+if(!localStorage.getItem('cohubId')) {
+    localStorage.setItem('cohubId', guid());
+}
+
 const App = new Vue({
     el: '#app',
     data: {
@@ -14,8 +27,13 @@ const App = new Vue({
     methods: {
         send: function() {
             if(this.message !== '') {
-                socket.emit('message', this.message);
-                this.messages.push(this.message);
+                var newMessage = {
+                    id: guid(),
+                    author: localStorage.getItem('cohubId'),
+                    text: this.message
+                };
+                socket.emit('message', newMessage);
+                this.messages.push(newMessage);
                 this.message = '';
                 scrollToBottom('message-box');
             }
