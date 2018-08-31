@@ -5,6 +5,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const cors = require('cors');
+const _ = require('lodash');
 
 const port = process.env.PORT || 5000;
 
@@ -42,11 +43,19 @@ io.on('connection', client => {
     // Automatically send all current messages
     client.emit('update', messages);
 
-    client.on('message', function(message) {
-        console.log(message);
+    client.on('message', message => {
+        // console.log(message);
         messages.push(message);
         // console.log('Total messages: ' + messages.length);
         client.broadcast.emit('update', messages);
+    });
+
+    client.on('delete', request => {
+        const msg = _.find(messages, { id: request.id });
+        if(msg.author === request.author) {
+            _.remove(messages, { id: request.id });
+        }
+        io.emit('update', messages);
     });
 
 });

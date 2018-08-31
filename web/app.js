@@ -37,6 +37,10 @@ const App = new Vue({
                 this.message = '';
                 scrollToBottom('message-box');
             }
+        },
+        remove: function(id) {
+            console.log('Remove called with: ' + id);
+            socket.emit('delete', { id: id, author: localStorage.getItem('cohubId') });
         }
     }
 });
