@@ -33,7 +33,6 @@ const App = new Vue({
                     text: this.message
                 };
                 socket.emit('message', newMessage);
-                this.messages.push(newMessage);
                 this.message = '';
                 scrollToBottom('message-box');
             }

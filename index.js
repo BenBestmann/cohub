@@ -47,7 +47,7 @@ io.on('connection', client => {
         // console.log(message);
         messages.push(message);
         // console.log('Total messages: ' + messages.length);
-        client.broadcast.emit('update', messages);
+        io.emit('update', messages);
     });
 
     client.on('delete', request => {
