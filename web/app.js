@@ -40,6 +40,9 @@ const App = new Vue({
         remove: function(id) {
             console.log('Remove called with: ' + id);
             socket.emit('delete', { id: id, author: localStorage.getItem('cohubId') });
+        },
+        isFromMe(uid) {
+            return localStorage.getItem('cohubId') === uid;
         }
     }
 });
